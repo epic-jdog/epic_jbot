@@ -26,10 +26,13 @@ public class BasicListen extends ListenerAdapter implements Listener {
 	
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
-		if (event.getMessage().startsWith("vlee"))
+		
+		String message = event.getMessage();
+
+		if (message.startsWith("vlee"))
 			 event.getBot().sendMessage("#p_slice", "Aww.");
 		
-		if (event.getMessage().contains("spam"))
+		if (message.contains("spam"))
 		 event.getBot().sendMessage("#p_slice", "Spam, spam, spam, spam, SPASPAAM!");
 		
 		
@@ -37,14 +40,14 @@ public class BasicListen extends ListenerAdapter implements Listener {
 			//rhzxdh
 				
 			
-		if (event.getMessage().contains("epic_jbot")){
+		if (message.contains("epic_jbot")){
 		
 		
-		if (event.getMessage().startsWith("epic_jbot, pls")){
+		if (message.startsWith("epic_jbot, pls")){
 			 event.getBot().sendMessage("#p_slice", "It's what I do!");
-		} else if (event.getMessage().startsWith("epic_jbot pls")){
+		} else if (message.startsWith("epic_jbot pls")){
 			 event.getBot().sendMessage("#p_slice", "You got a problem with me!?!");
-		} else if ((event.getMessage().equals(("epic_jbot, I KILL YOU")) && (event.getUser().getNick().toString().equals("epic_jdog")))){
+		} else if (message.equals("epic_jbot, I KILL YOU") && event.getUser().getNick().toString().equals("epic_jdog")){
               event.getBot().disconnect();
 		
 		} else {
@@ -60,7 +63,7 @@ public class BasicListen extends ListenerAdapter implements Listener {
 		  
 		  
 		}
-		  if (event.getMessage().startsWith("!time")){
+		  if (message.startsWith("!time")){
 				 
 			  Calendar calendar = Calendar.getInstance();;
 		    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
