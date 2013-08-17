@@ -12,7 +12,7 @@ public class Epic_Jbot {
 		bot.setName("epic_jbot");
 		bot.setVerbose(true);
 		bot.getListenerManager().addListener(new BasicListen());
-		
+		bot.getListenerManager().addListener(new ChannelJoin());
 		
 		try {
 		bot.connect("irc.esper.net");

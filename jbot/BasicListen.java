@@ -4,6 +4,7 @@ import org.pircbotx.hooks.Listener;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ActionEvent;
 import org.pircbotx.hooks.events.MessageEvent;
+import org.pircbotx.PircBotX;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
@@ -26,6 +27,8 @@ public class BasicListen extends ListenerAdapter implements Listener {
 	
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
+		
+		try {
 		if (event.getMessage().startsWith("vlee"))
 			 event.getBot().sendMessage("#p_slice", "Aww.");
 		
@@ -33,10 +36,7 @@ public class BasicListen extends ListenerAdapter implements Listener {
 		 event.getBot().sendMessage("#p_slice", "Spam, spam, spam, spam, SPASPAAM!");
 		
 		
-		//if (event.getMessage().startsWith("!jbot join"))
-			//rhzxdh
-				
-			
+		
 		if (event.getMessage().contains("epic_jbot")){
 		
 		
@@ -44,7 +44,7 @@ public class BasicListen extends ListenerAdapter implements Listener {
 			 event.getBot().sendMessage("#p_slice", "It's what I do!");
 		} else if (event.getMessage().startsWith("epic_jbot pls")){
 			 event.getBot().sendMessage("#p_slice", "You got a problem with me!?!");
-		} else if ((event.getMessage().equals(("epic_jbot, I KILL YOU")) && (event.getUser().getNick().toString().equals("epic_jdog")))){
+		} else if ((event.getMessage().equalsIgnoreCase(("epic_jbot, I KILL YOU")) && (event.getUser().getNick().toString().equals("epic_jdog")))){
               event.getBot().disconnect();
 		
 		} else {
@@ -70,7 +70,13 @@ public class BasicListen extends ListenerAdapter implements Listener {
 			  
 	    		event.getBot().sendMessage("#p_slice", "It's currently " + currenttime + " PST.");
 		  }
-		  
+		
+		} 
+		catch (Exception ey) {
+		ey.printStackTrace();
+		System.out.println("IT DONE GOOFT ON LISTENING TO CHAT!!");
+		
+	}
 	}
 	@Override	  
 	public void onAction(ActionEvent event) throws Exception{
