@@ -2,15 +2,12 @@ package jbot;
 
 import org.pircbotx.hooks.Listener;
 import org.pircbotx.hooks.ListenerAdapter;
-import org.pircbotx.hooks.events.ActionEvent;
 import org.pircbotx.hooks.events.MessageEvent;
-import org.pircbotx.Channel;
-import org.pircbotx.PircBotX;
-import org.pircbotx.hooks.events.ChannelInfoEvent;
 
 
 
 
+@SuppressWarnings("rawtypes")
 public class ChannelJoin extends ListenerAdapter implements Listener {
 	
 	@Override
@@ -21,12 +18,12 @@ public class ChannelJoin extends ListenerAdapter implements Listener {
 		String channelraw = "#p_slice";
 	
 	
-		if (event.getMessage().startsWith("!jbot join")){
+		if (event.getMessage().startsWith("!jbot join") && event.getUser().getNick().toString().equals("epic_jdog")){
 			channelraw = event.getMessage().toString(); 
 			//System.out.println(channelraw);
 			
 			
-			String delims = "[ ]";
+			  String delims = "[ ]";
 			String[] parts = channelraw.split(delims);
 			
 			String channeltojoin = parts[2];
@@ -42,20 +39,20 @@ public class ChannelJoin extends ListenerAdapter implements Listener {
 					ex.printStackTrace();
 					System.out.println("IT DONE GOOFT ON JOINING ANOTHER CHANNEL!!");
 				}
-	
+		}
 				String channelrawleave = null;
-			if (event.getMessage().startsWith("!jbot leave")){
+			if (event.getMessage().startsWith("!jbot leave") && event.getUser().getNick().toString().equals("epic_jdog")){
 				channelrawleave = event.getMessage().toString(); 
-				
+				String delims = "[ ]";
 			
 				String[] partsleave = channelrawleave.split(delims);
 				
 				String channeltoleave = partsleave[2];
 				System.out.println(channeltoleave);  
-				event.getBot().partChannel(event.getBot().getChannel(channeltoleave), "Duty calls.");
+				event.getBot().partChannel(event.getBot().getChannel(channeltoleave));
 		
 		
-		}
+		
 	
 	
 		}

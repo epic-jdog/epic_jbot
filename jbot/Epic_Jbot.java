@@ -3,7 +3,6 @@ import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.managers.ListenerManager;
 
 
-
 public class Epic_Jbot {
 
 	
