@@ -60,9 +60,9 @@ public class BasicListen extends ListenerAdapter implements Listener {
 			if (message.contains("spam"))
 				event.getBot().sendMessage((event.getChannel()), "Spam, spam, spam, spam, SPASPAAM!");
 
-			if (message.equals("jbot, I KILL YOU") && event.getUser().getNick().toString().equals("epic_jdog"))
+			if (message.equals("jbot, I KILL YOU") && event.getUser().getNick().toString().equals("epic_jdog")){
 				event.getBot().disconnect();
-
+			}
 
 			if (message.equals("!jbot disconnect") && event.getUser().getNick().toString().equals("epic_jdog"))
 				event.getBot().disconnect();
@@ -91,7 +91,7 @@ public class BasicListen extends ListenerAdapter implements Listener {
 				final Random rand = new Random();
 
 				String[] phrases = {"Yo!", "That would be this fine bot right here.", "G'day, sirs.", "This is the jbot you're looking for!", "Yea Buddy!", "jbot is best bot!"};
-				String response = phrases[rand.nextInt(phrases.length)];
+				final String response = phrases[rand.nextInt(phrases.length)];
 				event.getBot().sendMessage(event.getChannel(), response);
 
 
