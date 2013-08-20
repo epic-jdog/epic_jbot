@@ -5,80 +5,46 @@ import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
 
-
-
 @SuppressWarnings("rawtypes")
-public class ChannelJoin extends ListenerAdapter implements Listener {
-	
-	@Override
-	public void onMessage(MessageEvent event) throws Exception {
+public class ChannelJoin extends ListenerAdapter
+{
+    private Epic_Jbot bot;
 
-	
-	
-		String channelraw = "#p_slice";
-	
-	
-		if (event.getMessage().startsWith("!jbot join") && event.getUser().getNick().toString().equals("epic_jdog")){
-			channelraw = event.getMessage().toString(); 
-			//System.out.println(channelraw);
-			
-			
-			  String delims = "[ ]";
-			String[] parts = channelraw.split(delims);
-			
-			String channeltojoin = parts[2];
-  
-			System.out.println(channeltojoin);  
-			
-			try {
-				
-				event.getBot().joinChannel(channeltojoin);
-				
-				}
-				catch (Exception ex) {
-					ex.printStackTrace();
-					System.out.println("IT DONE GOOFT ON JOINING ANOTHER CHANNEL!!");
-				}
-		}
-				String channelrawleave = null;
-			if (event.getMessage().startsWith("!jbot leave") && event.getUser().getNick().toString().equals("epic_jdog")){
-				channelrawleave = event.getMessage().toString(); 
-				String delims = "[ ]";
-			
-				String[] partsleave = channelrawleave.split(delims);
-				
-				String channeltoleave = partsleave[2];
-				System.out.println(channeltoleave);  
-				event.getBot().partChannel(event.getBot().getChannel(channeltoleave));
-		
-		
-		
-	
-	
-		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	}
-	}
+    public ChannelJoin(Epic_Jbot jbot) {
+        bot = jbot;
+    }
+
+    @Override
+    public void onMessage(MessageEvent event) {
+
+        String channelraw;
+
+        if (event.getMessage().startsWith("!jbot join") && event.getUser().getNick().equals("epic_jdog")) {
+
+            channelraw = event.getMessage();
+            //System.out.println(channelraw);
+
+            String delims = "[ ]";
+            String[] parts = channelraw.split(delims);
+
+            String channeltojoin = parts[2];
+
+            System.out.println(channeltojoin);
+
+            bot.getBot().joinChannel(channeltojoin);
+        }
+
+        String channelrawleave;
+
+        if (event.getMessage().startsWith("!jbot leave") && event.getUser().getNick().equals("epic_jdog")) {
+            channelrawleave = event.getMessage();
+            String delims = "[ ]";
+
+            String[] partsleave = channelrawleave.split(delims);
+
+            String channeltoleave = partsleave[2];
+            System.out.println(channeltoleave);
+            bot.getBot().partChannel(event.getBot().getChannel(channeltoleave));
+        }
+    }
+}
