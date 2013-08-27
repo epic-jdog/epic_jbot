@@ -19,7 +19,10 @@ public class PMListen extends ListenerAdapter implements Listener {
 		String pmessage = event.getMessage();
 		event.getBot().sendMessage("epic_jdog", "PM received from " + user + ": " + pmessage);
 
-
+		return;
 	}
+	
+	event.getBot().sendMessage("epic_jdog", "only you should see this!?");
+	
 }
 }

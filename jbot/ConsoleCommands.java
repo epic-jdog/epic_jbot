@@ -1,36 +1,73 @@
 package jbot;
 
-import org.pircbotx.hooks.Listener;
-import org.pircbotx.hooks.ListenerAdapter;
-import org.pircbotx.hooks.events.MessageEvent;
+import jbot.BasicListen;
 
+//import org.pircbotx.PircBotX;
+import java.io.BufferedReader;
 import java.io.Console;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 
 
-//@SuppressWarnings("rawtypes")
-//public class ConsoleCommands extends ListenerAdapter implements Listener {
-//Treating this like a listener (It basically is), to easily get java to keep checking for console input.
+
+public class ConsoleCommands {
+
+	public static void main() throws IOException {
 	
-	//public void onMessage(MessageEvent event) throws IOException {
-	//Console cons = System.console();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			System.err.println("IT DONE GOOFT on waiting.... somehow....");
+			e.printStackTrace();
+		}
+		Console cons = System.console();
 
-    //if (cons == null) {
-   // System.err.println("THERE BE NONE OF THEM CONSOLES AVAILABLE FOR ME TO UUUSE!!!!!!.");
-      //  System.exit(1);
-   // }
+    if (cons == null) {
+    System.err.println("THERE BE NONE OF THEM CONSOLES AVAILABLE FOR ME TO UUUSE!!!!!!.");
+      System.exit(1);
+   }
+
+    
+    
+    
+    
+    System.out.println("***Commands may be entered via console***");
+    while(true){
 
 
-    //String enteredcommand = cons.readLine("***Commands may be entered via console***");
+        System.out.print("Enter Command: ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+         String enteredcommand = "noneyet";
+
+   
+        try {
+        	enteredcommand = br.readLine();
+        } catch (IOException ioe) {
+           System.out.println("IT DONE GOOFT ON READING YO COMMAND!?!");
+           System.exit(1);
+        }
+
+        System.out.println("Command received: " + enteredcommand);
+
+        if(enteredcommand.equalsIgnoreCase("Disconnect")){
+    		
+        	
+        	System.out.println("Told Me To Disconnect");
+        	BasicListen.setDiscValue(true);
+        	
+    	}
+    
+    }
+	
+	}
+
+
+
+
+}
 	
 	
-	//if(enteredcommand.equalsIgnoreCase("Disconnect")){
-		
-	//	event.getBot().disconnect();
-	//}
 	
-	
-	//}
-//}
+
