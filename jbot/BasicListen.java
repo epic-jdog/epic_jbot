@@ -5,17 +5,29 @@ import java.lang.management.RuntimeMXBean;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
-
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.Listener;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ActionEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 
 @SuppressWarnings("rawtypes")
-public class BasicListen extends ListenerAdapter implements Listener {
-
+public class BasicListen extends ListenerAdapter {
 	public static boolean disconnectcommand = false;
-
+	private Epic_Jbot bot;
+	
+	
+	// public BasicListen(PircBotX jbot) {
+		//         bot = jbot;
+		//    }
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void setDiscValue(boolean disconnect) {
 		disconnectcommand = disconnect; // change the value
 	}
@@ -84,7 +96,10 @@ public class BasicListen extends ListenerAdapter implements Listener {
 				event.getBot().disconnect();
 			}
 
-			
+			if (message.equals("!jbot terrorize")
+					&& event.getUser().getNick().toString().equals("epic_jdog")) {
+				event.getBot().disconnect();
+			}
 			
 			
 			
@@ -122,7 +137,7 @@ public class BasicListen extends ListenerAdapter implements Listener {
 
 			}
 
-			if (message.startsWith("!time")) {
+			if (message.startsWith("!jbot time")) {
 
 				Calendar calendar = Calendar.getInstance();
 				;
