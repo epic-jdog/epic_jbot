@@ -5,8 +5,7 @@ import java.lang.management.RuntimeMXBean;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
-import org.pircbotx.PircBotX;
-import org.pircbotx.hooks.Listener;
+
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ActionEvent;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -14,23 +13,16 @@ import org.pircbotx.hooks.events.MessageEvent;
 @SuppressWarnings("rawtypes")
 public class BasicListen extends ListenerAdapter {
 	public static boolean disconnectcommand = false;
-	private Epic_Jbot bot;
-	
-	
-	// public BasicListen(PircBotX jbot) {
-		//         bot = jbot;
-		//    }
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public static void setDiscValue(boolean disconnect) {
 		disconnectcommand = disconnect; // change the value
 	}
+
+	// public BasicListen(PircBotX jbot) {
+	// bot = jbot;
+	// }
+
+	private Epic_Jbot bot;
 
 	@Override
 	public void onAction(ActionEvent event) throws Exception {
@@ -49,25 +41,21 @@ public class BasicListen extends ListenerAdapter {
 
 	}
 
-	
 	/*
-	@Override
-	public void onConnect(ConnectEvent event) throws Exception {
-
-		for (;;) {
-			Thread.sleep(100);
-
-			if (disconnectcommand == true) {
-
-				event.getBot().disconnect();
-
-			}
-			Thread.sleep(1000);
-
-		}
-
-	}
-*/
+	 * @Override public void onConnect(ConnectEvent event) throws Exception {
+	 * 
+	 * for (;;) { Thread.sleep(100);
+	 * 
+	 * if (disconnectcommand == true) {
+	 * 
+	 * event.getBot().disconnect();
+	 * 
+	 * } Thread.sleep(1000);
+	 * 
+	 * }
+	 * 
+	 * }
+	 */
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
 
@@ -100,10 +88,9 @@ public class BasicListen extends ListenerAdapter {
 					&& event.getUser().getNick().toString().equals("epic_jdog")) {
 				event.getBot().disconnect();
 			}
-			
-			
-			
-			if (message.equals("!jbot disconnect") && event.getUser().getNick().toString().equals("epic_jdog"))
+
+			if (message.equals("!jbot disconnect")
+					&& event.getUser().getNick().toString().equals("epic_jdog"))
 				event.getBot().disconnect();
 
 			if (message.contains("epic_jbot")) {
@@ -125,13 +112,19 @@ public class BasicListen extends ListenerAdapter {
 					event.getBot().disconnect();
 					return;
 				}
+				if (message.equals("!jbot reconnect")
+						&& event.getUser().getNick().toString()
+								.equals("epic_jdog")) {
+					event.getBot().reconnect();
+					return;
+				}
 
 				final Random rand = new Random();
 
 				String[] phrases = { "Yo!",
 						"That would be this fine bot right here.",
 						"G'day, sirs.", "This is the jbot you're looking for!",
-						"Yea Buddy!", "jbot is best bot!" };
+						"Yea Buddy!", "jbot is best bot!", "Hello, mates!" };
 				final String response = phrases[rand.nextInt(phrases.length)];
 				event.getBot().sendMessage(event.getChannel(), response);
 

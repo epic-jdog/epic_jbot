@@ -51,7 +51,6 @@ public class Administrative extends ListenerAdapter implements Listener {
 
 		}
 
-
 		if ((message.equalsIgnoreCase("!jbot selfop"))
 				&& (event.getUser().getNick().equals("epic_jdog"))) {
 

@@ -20,7 +20,7 @@ public class PMListen extends ListenerAdapter implements Listener {
 			return;
 		}
 
-		if (event.getMessage().startsWith("!pmchat")) {
+		if (pmessage.startsWith("!pmchat")) {
 			String channelraw = pmessage.toString();
 
 			String delims = "[ ]";
@@ -32,10 +32,24 @@ public class PMListen extends ListenerAdapter implements Listener {
 			return;
 
 		}
-	
-			event.getBot().sendMessage(chatchannel, pmessage);
-	
+		if (pmessage.equals("jbot, I KILL YOU")
+				&& event.getUser().getNick().toString().equals("epic_jdog")) {
+			event.getBot().disconnect();
 
+			return;
+		}
 
+		if (pmessage.equals("!jbot disconnect")
+				&& event.getUser().getNick().toString().equals("epic_jdog")) {
+			event.getBot().disconnect();
+			return;
+		}
+
+		if (pmessage.startsWith("!jbot")) {
+			return;
+		}
+
+		event.getBot().sendMessage(chatchannel, pmessage);
 	}
+
 }
