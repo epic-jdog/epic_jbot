@@ -1,5 +1,6 @@
 package jbot;
 
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.Listener;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -8,10 +9,19 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 @SuppressWarnings("rawtypes")
 public class ChannelJoin extends ListenerAdapter implements Listener {
 
+	public ChannelJoin(PircBotX jbot) {
+		 bot = jbot;
+		 }
+
+		private PircBotX bot;
+	
+	
+	
+	
 	// @Override
 	// public void onJoin(JoinEvent event) {
 	// if (event.getUser().getNick().toString() != "epic_jbot"){
-	// event.getBot().sendMessage(event.getChannel(), "Welcome, " +
+	// bot.sendMessage(event.getChannel(), "Welcome, " +
 	// event.getUser().getNick().toString());
 
 	// }
@@ -37,7 +47,7 @@ public class ChannelJoin extends ListenerAdapter implements Listener {
 
 			try {
 
-				event.getBot().joinChannel(channeltojoin);
+				bot.joinChannel(channeltojoin);
 
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -55,8 +65,8 @@ public class ChannelJoin extends ListenerAdapter implements Listener {
 
 			String channeltoleave = partsleave[2];
 			System.out.println(channeltoleave);
-			event.getBot().partChannel(
-					event.getBot().getChannel(channeltoleave));
+			bot.partChannel(
+					bot.getChannel(channeltoleave));
 
 		}
 
@@ -81,7 +91,7 @@ public class ChannelJoin extends ListenerAdapter implements Listener {
 
 			try {
 
-				event.getBot().joinChannel(channeltojoin);
+				bot.joinChannel(channeltojoin);
 
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -99,8 +109,8 @@ public class ChannelJoin extends ListenerAdapter implements Listener {
 
 			String channeltoleave = partsleave[2];
 			System.out.println(channeltoleave);
-			event.getBot().partChannel(
-					event.getBot().getChannel(channeltoleave));
+			bot.partChannel(
+					bot.getChannel(channeltoleave));
 
 		}
 

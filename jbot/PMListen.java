@@ -1,5 +1,6 @@
 package jbot;
 
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.Listener;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
@@ -7,14 +8,26 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 @SuppressWarnings("rawtypes")
 public class PMListen extends ListenerAdapter implements Listener {
 	String chatchannel = "#epic_jdog";
+	public PMListen(PircBotX jbot) {
+		 bot = jbot;
+		 }
 
+		private PircBotX bot;
+	
+	
+	
 	@Override
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
+		
+		
+		
+		
+		
 		String pmessage = event.getMessage();
 		if (!event.getUser().getNick().toString().equals("epic_jdog")) {
 			event.respond("Hi there, I'm, epic_jdog's bot. I don't reply through here, so if you have questions about me, talk to epic_jdog if he's online. Good day, sir.");
 			String user = event.getUser().getNick();
-			event.getBot().sendMessage("epic_jdog",
+			bot.sendMessage("epic_jdog",
 					"PM received from " + user + ": " + pmessage);
 
 			return;
@@ -26,7 +39,7 @@ public class PMListen extends ListenerAdapter implements Listener {
 			String delims = "[ ]";
 			String[] parts = channelraw.split(delims);
 			chatchannel = parts[1];
-			event.getBot().sendMessage(event.getUser(),
+			bot.sendMessage(event.getUser(),
 					"Target channel/nick changed to " + chatchannel);
 
 			return;
@@ -34,14 +47,14 @@ public class PMListen extends ListenerAdapter implements Listener {
 		}
 		if (pmessage.equals("jbot, I KILL YOU")
 				&& event.getUser().getNick().toString().equals("epic_jdog")) {
-			event.getBot().disconnect();
+			bot.disconnect();
 
 			return;
 		}
 
 		if (pmessage.equals("!jbot disconnect")
 				&& event.getUser().getNick().toString().equals("epic_jdog")) {
-			event.getBot().disconnect();
+			bot.disconnect();
 			return;
 		}
 
@@ -49,7 +62,7 @@ public class PMListen extends ListenerAdapter implements Listener {
 			return;
 		}
 
-		event.getBot().sendMessage(chatchannel, pmessage);
+		bot.sendMessage(chatchannel, pmessage);
 	}
 
 }
