@@ -6,43 +6,38 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-
-
+import jbot.Epic_Jbot;
 
 public class TextRead {
-	static private PircBotX bot;
+	
 	public static String itemname = "None Yet";
 	public static String filename = "None Yet";
 	public static String result = "No Content Found";
+	private static PircBotX bot = Epic_Jbot.mecha_jdog;
 	
-	public TextRead(PircBotX jbot) {
-		 bot = jbot;
-		 }
-	
-
 	public static String ReadFile(String fileee, String item){
+		
 		TextRead.filename = fileee.toLowerCase();
 		TextRead.itemname = item;
 		System.out.println(itemname);
 		URL url = TextRead.class.getResource(filename);
 		
-		if (url == null){
-			
-			result = "File not found";
 		
-		} else {
+		
+		if (url == null){
+			result = "File not found";
+			return result;
+		}
+		
+		
+		
 		
 		File file = new File(url.getPath());
-		if (TextRead.filename.equals("None Yet")){
-			
-			TextRead.result = "Usage: !jbot read filename itemname";
-			
+		if ((TextRead.filename.equals("None Yet")) || (TextRead.itemname.equals("None Yet"))){
+			result = "Usage: !jbot read filename itemname";	
+			return result;
 		}
-		if (TextRead.itemname.equals("None Yet")){
-			
-			TextRead.result = "Usage: !jbot read filename itemname";
-			
-		}
+		
 		if (!TextRead.filename.equals("None Yet")){
 			
 			try {
@@ -76,7 +71,7 @@ public class TextRead {
 		   }
 		
 		}
-		}
+		
 		   
 		
 		
@@ -87,4 +82,17 @@ public class TextRead {
 				   return "File written.";
 	
 	}
-	}
+
+		
+		   public void TestTalk2(){
+
+
+			   System.out.println("Test 2");
+			   bot.sendMessage("#epic_jdog", "test");
+			   
+		   }
+
+
+
+
+}
