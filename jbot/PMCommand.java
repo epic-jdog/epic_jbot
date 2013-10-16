@@ -1,3 +1,9 @@
+package jbot;
+
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.pircbotx.PircBotX;
 
