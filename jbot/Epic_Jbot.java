@@ -15,7 +15,7 @@ public class Epic_Jbot {
 		mecha_jdog.setCapEnabled(true);
 		mecha_jdog.setVerbose(true);
 		mecha_jdog.setAutoSplitMessage(true);
-		mecha_jdog.getCapHandlers().add(new SASLCapHandler("epic_jbot", "REDACTED"));
+		mecha_jdog.getCapHandlers().add(new SASLCapHandler("epic_jbot", "250127"));
 		mecha_jdog.setLogin("epic_jbot");
 		mecha_jdog.getListenerManager().addListener(new BasicListen(mecha_jdog));
 		mecha_jdog.getListenerManager().addListener(new MessageEventHandler(mecha_jdog));

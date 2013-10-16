@@ -30,7 +30,7 @@ public class Command {
 		this.authorized = authorized;
 	}
 
-	public final void main() throws Exception {
+	public final void exec() throws Exception {
 
 		if (authorized == true) {
 
@@ -38,10 +38,12 @@ public class Command {
 
 			case "disconnect": {
 				bot.disconnect();
+			break;
 			}
 
 			case "join": {
 				bot.joinChannel(param1);
+				break;
 			}
 
 			case "leave": {
@@ -50,21 +52,24 @@ public class Command {
 				} else {
 					bot.partChannel(bot.getChannel(param1));
 				}
-
+				break;
 			}
 
 			case "kick": {
 				System.out.println("Attempting to kick '" + nick
 						+ "' please stand by.");
 				bot.kick(chan, sender, param1);
+				break;
 			}
 
 			case "selfop": {
 				bot.sendMessage(chan, "!op");
+				break;
 			}
 
 			case "nick": {
 				bot.changeNick(param1);
+				break;
 			}
 
 			case "verbose": {
@@ -72,22 +77,19 @@ public class Command {
 					Epic_Jbot.mecha_jdog.setVerbose(true);
 				if (param1.equals("off"))
 					Epic_Jbot.mecha_jdog.setVerbose(false);
-
+				break;
 			}
 
 			case "reconnect": {
 				bot.reconnect();
+				break;
 			}
 
 			case "DEFAULT": {
 				bot.sendMessage(chan, "Command not recognized. Do !jbot commands");
-				
+				break;
 			}
-			default: {
-			
-			bot.sendMessage(chan, "Error somewhere: Command not recognized. Do !jbot commands");
-			
-			}
+			default: {}
 
 			switch (commandname) {  //these commands are for everyone
 
@@ -97,17 +99,21 @@ public class Command {
 				String uptime = String.valueOf(uptimelong);
 				bot.sendMessage(chan, "Current uptime (In milliseconds): "
 						+ uptime);
-
+				break;
 			}
 			case "time": {
 				Calendar calendar = Calendar.getInstance();
 				SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 				String currenttime = sdf.format(calendar.getTime());
 				bot.sendMessage(chan, "It's currently " + currenttime + " PST.");
+			
+				break;
 			}
 			case "testmsg2": {
 				TextRead t = new TextRead();
-				t.TestTalk2();
+			t.TestTalk2();
+			
+			break;
 			}
 			case "read": {
 				String a = "None Yet";
@@ -122,7 +128,9 @@ public class Command {
 					b = param2;
 					bot.sendMessage(chan, TextRead.ReadFile(a, (b)));
 				}
+				break;
 			}
+			
 			
 			/** case "write":{
 			
@@ -145,7 +153,7 @@ public class Command {
 			
 			
 			default: {
-				bot.sendMessage(chan, "What sort of command is that?! !jbot commands");
+				bot.sendMessage(chan, "Command not found - do !jbot commands for help");
 			}
 			
 			}

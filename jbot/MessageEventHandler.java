@@ -58,6 +58,7 @@ public class MessageEventHandler extends ListenerAdapter {
 			}
 
 			Command c = new Command(commandname, param1, param2, u, n, chan, authorized);
+			c.exec();
 		}
 	}
 	
@@ -72,12 +73,21 @@ public class MessageEventHandler extends ListenerAdapter {
 				String pmessageraw = pmessage;
 				String delims = "[ ]";
 				String[] commandparts = pmessageraw.split(delims);
-
-				String commandname = commandparts[0];
-				String param1 = commandparts[1];
-				String param2 = commandparts[2];
+				
+				int i = commandparts.length;
+				String commandname = "DEFAULT";
+				String param1 = "DEFAULT";
+				String param2 = "DEFAULT";
+				if (i >= 3){
+					commandname = commandparts[1];
+					param1 = commandparts[2];
+				}
+				if (i == 2){
+					commandname = commandparts[1];
+				}
 
 				PMCommand p = new PMCommand(commandname, param1, pmessageraw);
+				p.exec();
 		} else {
 				event.respond("Hi there, I'm, epic_jdog's bot. I don't reply through here, so if you have questions about me, talk to epic_jdog if he's online. Good day, sir.");
 				bot.sendMessage("epic_jdog",

@@ -22,7 +22,7 @@ public class PMCommand {
 		this.pmessage = pmessage;
 	}
 	
-	public final void main()  throws Exception{
+	public final void exec()  throws Exception{
 
 		if(!commandname.startsWith("!")){
 			bot.sendMessage(chatchannel, pmessage);
