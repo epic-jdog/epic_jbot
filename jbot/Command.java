@@ -61,12 +61,12 @@ public class Command {
 				bot.kick(chan, sender, param1);
 				break;
 			}
-			case "botinfo":{
+			case "read2":{
 				
 				if (param2.equals("exact")){
-				bot.sendMessage(chan, TextRead.BotInfo(param1, true));
+				bot.sendMessage(chan, TextRead.Read2(param1, true));
 				} else{
-				bot.sendMessage(chan, TextRead.BotInfo(param1, false));	
+				bot.sendMessage(chan, TextRead.Read2(param1, false));	
 				}
 				
 				break;

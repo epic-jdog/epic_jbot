@@ -101,10 +101,10 @@ public class TextRead {
 			  int linenumber = 1;
 			  switch (item){
 			  
-			 // case"password":{ Not making this work from irc, so I don't accidently have it blurt out my password in front of everyone :)
-			 // linenumber = 2;
-			//  break;
-			//  }
+			  case"password":{ //Not making this work from irc, so I don't accidently have it blurt out my password in front of everyone :)
+			  linenumber = 2;
+			  break;
+			  }
 			  
 			  case"test":{
 			  linenumber = 3;
@@ -126,12 +126,6 @@ public class TextRead {
 				  bot.sendMessage("#epic_jdog", "Usage: !jbot botinfo <what you want>");
 				 
 			  }
-			  
-			  
-			  
-			  
-			  
-			  
 			  }
 			  
 			  String info = "nope";
@@ -157,4 +151,53 @@ public class TextRead {
 			  return info; 
 		   
 }
+		   public static String Read2(String item, boolean exact) throws IOException{
+				  int linenumber = 1;
+				  switch (item){
+				  
+				  case"test":{
+				  linenumber = 3;
+				  break;
+				  }
+				  case"login":{
+					  linenumber = 4;
+					  break;
+					  }
+				  case"42":{
+					  linenumber = 5;
+					  break;
+					  }
+				  case"network":{
+					  linenumber = 6;
+					  break;
+					  }
+				  case"DEFAULT":{
+					  bot.sendMessage("#epic_jdog", "Usage: !jbot botinfo <what you want>");
+					 
+				  }
+				  }
+				  
+				  String info = "nope";
+				  String path = "E:\\Root\\botinfo.txt";
+				  Scanner s = new Scanner(new FileReader(path)); 
+				  
+				  
+		 
+				  if (s.hasNext()){
+				  for (int i = 0; i <= linenumber - 1; i++){
+				  //bot.sendMessage("#epic_jdog", s.nextLine());
+				  
+				  if (exact == false){	  
+				  info = "Line "+ linenumber + ": " + s.nextLine();
+				  } else { 
+				  info = s.nextLine().toString();
+				  }
+				  }
+				  }
+				  
+				  s.close();
+				   
+				  return info; 
+			   
+	}
 }

@@ -23,7 +23,7 @@ public class Epic_Jbot {
 		
 		
 		try {
-			mecha_jdog.connect(TextRead.BotInfo("network", true));
+			mecha_jdog.connect("irc.esper.net");
 			mecha_jdog.joinChannel("#epic_jdog");
 			mecha_jdog.setAutoNickChange(false);
 			
