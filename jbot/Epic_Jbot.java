@@ -15,15 +15,15 @@ public class Epic_Jbot {
 		mecha_jdog.setCapEnabled(true);
 		mecha_jdog.setVerbose(true);
 		mecha_jdog.setAutoSplitMessage(true);
-		mecha_jdog.getCapHandlers().add(new SASLCapHandler("epic_jbot", "REDACTED"));
-		mecha_jdog.setLogin("epic_jbot");
+		System.out.println(TextRead.BotInfo("42", true));
+		mecha_jdog.getCapHandlers().add(new SASLCapHandler(TextRead.BotInfo("login", true), TextRead.BotInfo("password", true)));
+		mecha_jdog.setLogin(TextRead.BotInfo("login", true));
 		mecha_jdog.getListenerManager().addListener(new BasicListen(mecha_jdog));
 		mecha_jdog.getListenerManager().addListener(new MessageEventHandler(mecha_jdog));
 		
 		
 		try {
-			mecha_jdog.connect("irc.esper.net");
-			//mecha_jdog.connect("irc.seion.us");
+			mecha_jdog.connect(TextRead.BotInfo("network", true));
 			mecha_jdog.joinChannel("#epic_jdog");
 			mecha_jdog.setAutoNickChange(false);
 			

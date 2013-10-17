@@ -8,7 +8,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 public class MessageEventHandler extends ListenerAdapter { 
-	
+	public static String prefix = "!jbot";
 	
 	private PircBotX bot;
 	
@@ -23,7 +23,7 @@ public class MessageEventHandler extends ListenerAdapter {
 		String message = event.getMessage();
 		
 		
-		if (message.startsWith("!jbot")) {
+		if (message.startsWith(prefix)) {
 			
 			Channel chan = event.getChannel();
 			User u = event.getUser();

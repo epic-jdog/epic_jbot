@@ -61,9 +61,23 @@ public class Command {
 				bot.kick(chan, sender, param1);
 				break;
 			}
-
+			case "botinfo":{
+				
+				if (param2.equals("exact")){
+				bot.sendMessage(chan, TextRead.BotInfo(param1, true));
+				} else{
+				bot.sendMessage(chan, TextRead.BotInfo(param1, false));	
+				}
+				
+				break;
+			}
 			case "selfop": {
 				bot.sendMessage(chan, "!op");
+				break;
+			}
+			case "prefix": {
+				MessageEventHandler.prefix = param1;
+				bot.sendMessage(chan, "Command prefix set to '" + param1 + "'");
 				break;
 			}
 
@@ -90,7 +104,8 @@ public class Command {
 				break;
 			}
 			default: {}
-
+			}
+		}
 			switch (commandname) {  //these commands are for everyone
 
 			case "uptime": {
@@ -109,6 +124,9 @@ public class Command {
 			
 				break;
 			}
+			
+			
+			
 			case "testmsg2": {
 				TextRead t = new TextRead();
 			t.TestTalk2();
@@ -131,7 +149,10 @@ public class Command {
 				break;
 			}
 			
-			
+			case "DEFAULT": {
+			bot.sendMessage(chan, "epic_jbot command not found - do !jbot commands for help");
+			break;
+			}
 			/** case "write":{
 			
 				String a = "None Yet";
@@ -147,19 +168,17 @@ public class Command {
 				a = param1;
 				b = param2;
 				bot.sendMessage((event.getChannel()),TextRead.WriteFile(a, (b)));
-				}
-			}
-		 **/
+				} **/
+			
+		 
 			
 			
-			default: {
-				bot.sendMessage(chan, "Command not found - do !jbot commands for help");
-			}
+			default: {}
 			
 			}
 
 		}
-		}
+		
 
 	}
-}
+
