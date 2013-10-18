@@ -1,4 +1,4 @@
-package jbot;
+package net.epic_jdog.jbot;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;

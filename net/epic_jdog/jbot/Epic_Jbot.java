@@ -1,4 +1,4 @@
-package jbot;
+package net.epic_jdog.jbot;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.cap.SASLCapHandler;
