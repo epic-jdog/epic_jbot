@@ -1,3 +1,12 @@
+/**
+ * Created by James Ward (epic_jdog)
+ *
+ * Date: 02/11/13
+ * Time: 5:50 PM
+ *
+ *
+ */
+
 package net.epic_jdog.jbot;
 
 import org.pircbotx.Channel;

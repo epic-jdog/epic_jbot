@@ -1,12 +1,14 @@
-package net.epic_jdog.jbot;
+
 
 /**
- * Created with IntelliJ IDEA.
- * User: James W
- * Date: 01/11/13
- * Time: 7:44 PM
- * To change this template use File | Settings | File Templates.
+ * Created by James Ward (epic_jdog)
+ *
+ * Date: 02/11/13
+ * Time: 5:00 PM
+ *
+ *
  */
+package net.epic_jdog.jbot;
 
 import net.epic_jdog.jbot.TextRead;
 
@@ -18,6 +20,16 @@ public class Authorization {
 
     public boolean isTrusted(String nick) {
         return TextRead.FileContains(nick, "authtrust");
+    }
+
+    public String[] getOperators() {
+
+        return TextRead.getWholeFile("authoperator");
+    }
+
+    public String[] getTrusted() {
+
+        return TextRead.getWholeFile("authtrust");
     }
 
 

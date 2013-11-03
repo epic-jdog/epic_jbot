@@ -1,3 +1,11 @@
+/**
+ * Created by James Ward (epic_jdog)
+ *
+ * Date: 02/11/13
+ * Time: 5:50 PM
+ *
+ *
+ */
 package net.epic_jdog.jbot;
 
 import java.lang.management.ManagementFactory;
@@ -46,6 +54,16 @@ public class Command {
                     break;
                 }
 
+                case "readln": {
+                    try {
+                        bot.sendMessage(chan, TextRead.ReadLine((Integer.parseInt(param1)), param2, false));
+                    } catch (Exception ex) {
+                        bot.sendMessage(chan, "Invalid Line number or filename! Usage: !jbot readln <linenumber> <file>");
+                    }
+
+                    break;
+                }
+
                 case "leave": {
                     if (chan.toString().equals("DEFAULT")) {
                         bot.partChannel(chan);
@@ -64,13 +82,19 @@ public class Command {
                 case "read2": {
 
                     if (param2.equals("exact")) {
-                        bot.sendMessage(chan, TextRead.BotInfo2(param1, true));
+                        bot.sendMessage(chan, BotInfo.BotInfo2(param1, true));
                     } else {
-                        bot.sendMessage(chan, TextRead.BotInfo2(param1, false));
+                        bot.sendMessage(chan, BotInfo.BotInfo2(param1, false));
                     }
 
                     break;
                 }
+                case "filelength": {
+                    bot.sendMessage(chan, ("Length of " + param1 + " : " + TextRead.getFileLength(param1)));
+                    break;
+                }
+
+
                 case "selfop": {
                     bot.sendMessage(chan, "!op");
                     break;
