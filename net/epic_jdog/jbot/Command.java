@@ -161,6 +161,11 @@ public class Command {
                         + uptime);
                 break;
             }
+            case "ping": {
+                bot.sendMessage(chan, "pong?!");
+
+                break;
+            }
             case "time": {
                 Calendar calendar = Calendar.getInstance();
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");

@@ -14,7 +14,7 @@ public class PMCommand {
     private final PircBotX bot = Epic_Jbot.mecha_jdog;
     public String chatchannel = "#epic_jdog";
     public String commandname = "empty";
-    ;
+
     public String param1 = "DEFAULT";
 
     public String pmessage = "DEFAULT";

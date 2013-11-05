@@ -59,7 +59,7 @@ public class BotInfo {
             for (int i = 0; i <= linenumber - 1; i++) {
                 //bot.sendMessage("#epic_jdog", s.nextLine());
 
-                if (exact == false) {
+                if (!exact) {
                     info = "Line " + linenumber + ": " + s.nextLine();
                 } else {
                     info = s.nextLine().toString();

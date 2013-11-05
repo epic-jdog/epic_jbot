@@ -21,6 +21,7 @@ public class MessageEventHandler extends ListenerAdapter {
 
     private PircBotX bot;
     private Authorization a = new Authorization();
+    private JbotMath m = new JbotMath();
 
     public MessageEventHandler(PircBotX jbot) {
         bot = jbot;
@@ -33,7 +34,19 @@ public class MessageEventHandler extends ListenerAdapter {
 
 
         if (message.startsWith(prefix)) {
-
+            if (message.startsWith(prefix + " math")) {
+                Channel chan = event.getChannel();
+                String[] mathparts = message.split("[ ]", 3);
+                //System.out.println(mathparts[2]);
+                bot.sendMessage(chan, m.calculate(mathparts[2], false));
+                return;
+            }
+            if (message.startsWith(prefix + " maath")) {
+                Channel chan = event.getChannel();
+                String[] mathparts = message.split("[ ]", 3);
+                bot.sendMessage(chan, m.miscalculate(mathparts[2]));
+                return;
+            }
             Channel chan = event.getChannel();
             User u = event.getUser();
             String n = u.getNick();
@@ -42,8 +55,7 @@ public class MessageEventHandler extends ListenerAdapter {
                 authorized = true;
 
             String messageraw = message;
-            String delims = "[ ]";
-            String[] commandparts = messageraw.split(delims);
+            String[] commandparts = messageraw.split("[ ]");
 
             int i = commandparts.length;
 
@@ -66,7 +78,9 @@ public class MessageEventHandler extends ListenerAdapter {
 
             Command c = new Command(commandname, param1, param2, u, n, chan, authorized);
             c.exec();
+
         }
+
     }
 
     public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
