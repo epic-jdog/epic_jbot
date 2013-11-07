@@ -184,7 +184,8 @@ public class JbotMath {      // Basically, we break the given expression down in
 
     public String solveQuadratic(String MathExpressionQuadratic) {
         String quadraticresult = "vEVEVEVEV";
-        //stuff
+        //going to be a parser for ax^2+bx+c ,
+        // then going to quadratic a b and c
         return quadraticresult;
     }
 

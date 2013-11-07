@@ -174,6 +174,16 @@ public class Command {
 
                 break;
             }
+            case "quadratic": {
+                JbotMath j = new JbotMath();;
+                bot.sendMessage(chan, j.solveQuadratic(param1));
+                break;
+            }
+            case "solverekkyn": {
+                JbotMath j = new JbotMath();;
+                bot.sendMessage(chan, j.rekkyncalculate(param1));
+                break;
+            }
 
 
             case "DEFAULT": {
