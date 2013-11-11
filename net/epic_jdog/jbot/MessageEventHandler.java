@@ -19,18 +19,20 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 public class MessageEventHandler extends ListenerAdapter {
     public static String prefix = "!jbot";
 
-    private PircBotX bot;
-    private Authorization a = new Authorization();
-    private JbotMath m = new JbotMath();
 
+
+    private PircBotX bot;
     public MessageEventHandler(PircBotX jbot) {
         bot = jbot;
     }
+    private Authorization a = new Authorization();
+    private JbotMath m = new JbotMath();
 
-
+    @Override
     public void onMessage(MessageEvent event) throws Exception {
 
         String message = event.getMessage();
+
 
 
         if (message.startsWith(prefix)) {
@@ -82,7 +84,7 @@ public class MessageEventHandler extends ListenerAdapter {
         }
 
     }
-
+    @Override
     public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
 
         String pmessage = event.getMessage();

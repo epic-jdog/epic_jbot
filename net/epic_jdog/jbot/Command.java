@@ -53,10 +53,28 @@ public class Command {
                     bot.joinChannel(param1);
                     break;
                 }
+                case "vleebot": {
+                    VleeBot.init();
+                    break;
+                }
 
                 case "readln": {
                     try {
                         bot.sendMessage(chan, TextRead.ReadLine((Integer.parseInt(param1)), param2, false));
+                    } catch (Exception ex) {
+                        bot.sendMessage(chan, "Invalid Line number or filename! Usage: !jbot readln <linenumber> <file>");
+                    }
+
+                    break;
+                }
+                case "readfile": {
+                    try {
+                        String[] meh = TextRead.getWholeFile(param1);
+                        String mehh = "v";
+                        for (int q = 0; q < meh.length; q++){
+                        mehh = "" + mehh + meh[q];
+                        }
+                        bot.sendMessage(chan, mehh);
                     } catch (Exception ex) {
                         bot.sendMessage(chan, "Invalid Line number or filename! Usage: !jbot readln <linenumber> <file>");
                     }
@@ -74,9 +92,8 @@ public class Command {
                 }
 
                 case "kick": {
-                    System.out.println("Attempting to kick '" + nick
-                            + "' please stand by.");
-                    bot.kick(chan, sender, param1);
+                    System.out.println("Attempting to kick '" + param1 +"'");
+                    bot.kick(chan, bot.getUser(param1), param2);
                     break;
                 }
                 case "read2": {

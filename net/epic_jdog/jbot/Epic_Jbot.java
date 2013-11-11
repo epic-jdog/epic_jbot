@@ -22,7 +22,9 @@ public class Epic_Jbot {
         mecha_jdog.setCapEnabled(true);
         mecha_jdog.setVerbose(true);
         mecha_jdog.setAutoSplitMessage(true);
-        System.out.println(BotInfo.BotInfo("42", true));
+        for (int i = 42;i > 0; i--){
+            System.out.println(BotInfo.BotInfo("42", true));
+        }
         mecha_jdog.getCapHandlers().add(new SASLCapHandler(BotInfo.BotInfo("login", true), BotInfo.BotInfo("password", true)));
         mecha_jdog.setLogin(BotInfo.BotInfo("login", true));
         mecha_jdog.getListenerManager().addListener(new BasicListen(mecha_jdog));
@@ -30,7 +32,7 @@ public class Epic_Jbot {
 
 
         try {
-            mecha_jdog.connect("irc.esper.net");
+            mecha_jdog.connect("irc.seion.us");
             mecha_jdog.joinChannel("#epic_jdog");
             mecha_jdog.setAutoNickChange(false);
 

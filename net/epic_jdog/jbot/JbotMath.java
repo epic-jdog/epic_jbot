@@ -103,8 +103,9 @@ public class JbotMath {      // Basically, we break the given expression down in
         if ((MathExpression.startsWith("√")) || (MathExpression.startsWith("sqrt("))) {
             String[] array2 = expression.split("[√,)]");
             String[] arrayfinal = new String[2];
-            arrayfinal[1] = array2[0];
+            arrayfinal[1] = array2[1];
             arrayfinal[0] = "sqrt";
+
             return arrayfinal;
         }
 
